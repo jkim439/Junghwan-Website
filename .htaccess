@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\.jacekim\.com$ [NC]
+RewriteRule ^(.*)$ https://www.jacekim.com/$1 [L,R=301]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ $1.php [L,QSA]
+# Use PHP71 as default
+AddHandler application/x-httpd-php71 .php
